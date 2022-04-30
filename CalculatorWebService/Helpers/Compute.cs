@@ -9,6 +9,7 @@ namespace CalculatorWebService.Helpers
     {
         public double InputA { get; set; }
         public double InputB { get; set; }
+        public string Operator { get; set; }
         public double Result { get; set; }
 
     }
