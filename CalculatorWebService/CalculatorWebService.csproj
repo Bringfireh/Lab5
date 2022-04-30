@@ -76,6 +76,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helpers\Calculations.cs" />
+    <Compile Include="Helpers\ComputationResult.cs" />
     <Compile Include="Helpers\Compute.cs" />
     <Compile Include="Helpers\Inputs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

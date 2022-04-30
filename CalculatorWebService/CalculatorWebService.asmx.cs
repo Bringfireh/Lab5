@@ -20,24 +20,69 @@ namespace CalculatorWebService
     {
 
         [WebMethod(Description = "This method adds two numbers")]
-        public double Add(Inputs inputs)
+        public ComputationResult Add(Inputs inputs)
         {
-            return (inputs.firstnumber + inputs.secondnumber);
+            double result = (inputs.firstnumber + inputs.secondnumber);
+            string Operator = "+";
+            Compute com = new Compute();
+            com.InputA = inputs.firstnumber;
+            com.InputB = inputs.secondnumber;
+            com.Operator = Operator;
+            com.Result = result;
+            //insertData(com);
+            ComputationResult computationResult = new ComputationResult();
+            computationResult.Message = "Successfull";
+            computationResult.Value = result;
+            return computationResult;
         }
         [WebMethod(Description = "This method divides two numbers")]
-        public double Divide(Inputs inputs)
+        public ComputationResult Divide(Inputs inputs)
         {
-            return (inputs.firstnumber / inputs.secondnumber);
+            double result = (inputs.firstnumber / inputs.secondnumber); 
+            string Operator = "/";
+            Compute com = new Compute();
+            com.InputA = inputs.firstnumber;
+            com.InputB = inputs.secondnumber;
+            com.Operator = Operator;
+            com.Result = result;
+         // insertData(com);
+            ComputationResult computationResult = new ComputationResult();
+            computationResult.Message = "Successfull";
+            computationResult.Value = result;
+            return computationResult;
         }
         [WebMethod(Description = "This method determines the product of two numbers")]
-        public double Multiply(Inputs inputs)
+        public ComputationResult Multiply(Inputs inputs)
         {
-            return (inputs.firstnumber * inputs.secondnumber);
+            double result = (inputs.firstnumber * inputs.secondnumber);
+            string Operator = "*";
+            Compute com = new Compute();
+            com.InputA = inputs.firstnumber;
+            com.InputB = inputs.secondnumber;
+            com.Operator = Operator;
+            com.Result = result;
+           // insertData(com);
+            ComputationResult computationResult = new ComputationResult();
+            computationResult.Message = "Successfull";
+            computationResult.Value = result;
+            return computationResult;
         }
         [WebMethod(Description = "This method determines the difference between two numbers")]
-        public double Subtract(Inputs inputs)
+        public ComputationResult Subtract(Inputs inputs)
         {
-            return (inputs.firstnumber - inputs.secondnumber);
+            double result = (inputs.firstnumber - inputs.secondnumber);
+            string Operator = "-";
+            Compute com = new Compute();
+            com.InputA = inputs.firstnumber;
+            com.InputB = inputs.secondnumber;
+            com.Operator = Operator;
+            com.Result = result;
+            //  insertData(com);
+            ComputationResult computationResult = new ComputationResult();
+            computationResult.Message = "Successfull";
+            computationResult.Value = result;
+            return computationResult;
+            
         }
 
 
@@ -49,25 +94,28 @@ namespace CalculatorWebService
             Db db = new Db();
             db.InitializeDb();
             DataTable dt = db.GetAllCalculations();
-            List<Calculations> calList = new List<Calculations>();
+            List<Calculations> calResultList = new List<Calculations>();
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Calculations cal = new Calculations();
-                cal.Id = Convert.ToInt32(dt.Rows[i]["ID"]);
-                cal.RecentCalculations = dt.Rows[i]["RecentCalculations"].ToString();
-                calList.Add(cal);
+                Calculations calculation = new Calculations();
+                calculation.Id = Convert.ToInt32(dt.Rows[i]["ID"]);
+                calculation.RecentCalculations = dt.Rows[i]["RecentCalculations"].ToString();
+                calResultList.Add(calculation);
             }
-            return calList;
+            return calResultList;
         }
         [WebMethod(Description = "This method writes the recent calculation into the DB")]
-        public bool insertData(Compute com)
+        public ComputationResult insertData(Compute com)
         {
             Db db = new Db();
             db.InitializeDb();
             int id = db.GetAllCalculations().Rows.Count + 1;
             string RecentCalculation = com.InputA + com.Operator + com.InputB + "=" + com.Result;
             db.Insert(id, RecentCalculation);
-            return true;
+            ComputationResult computationResult = new ComputationResult();
+            computationResult.Message = "Successfull";
+            computationResult.Value = 00;
+            return computationResult;
         }
     }
 }
