@@ -8,6 +8,6 @@ namespace CalculatorWebService.Helpers
     public class Calculations
     {
         public int Id { get; set; }
-        public string Operation { get; set; }
+        public string RecentCalculations { get; set; }
     }
 }

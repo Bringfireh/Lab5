@@ -1,10 +1,11 @@
 ﻿using CalculatorWebService.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-
+using Data;
 namespace CalculatorWebService
 {
     /// <summary>
@@ -44,12 +45,28 @@ namespace CalculatorWebService
         public List<Calculations> getList()
         {
             //var calcList = get all list;
-            var ls = new List<Calculations>();
-            return ls;
+            
+            Db db = new Db();
+            db.InitializeDb();
+            DataTable dt = db.GetAllCalculations();
+            List<Calculations> calList = new List<Calculations>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Calculations cal = new Calculations();
+                cal.Id = Convert.ToInt32(dt.Rows[i]["ID"]);
+                cal.RecentCalculations = dt.Rows[i]["RecentCalculations"].ToString();
+                calList.Add(cal);
+            }
+            return calList;
         }
         [WebMethod(Description = "This method writes the recent calculation into the DB")]
         public bool insertData(Compute com)
         {
+            Db db = new Db();
+            db.InitializeDb();
+            int id = db.GetAllCalculations().Rows.Count + 1;
+            string RecentCalculation = com.InputA + com.Operator + com.InputB + "=" + com.Result;
+            db.Insert(id, RecentCalculation);
             return true;
         }
     }
