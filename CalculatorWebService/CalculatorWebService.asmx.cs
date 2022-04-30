@@ -29,7 +29,7 @@ namespace CalculatorWebService
             com.InputB = inputs.secondnumber;
             com.Operator = Operator;
             com.Result = result;
-            //insertData(com);
+            insertData(com);
             ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
@@ -45,7 +45,7 @@ namespace CalculatorWebService
             com.InputB = inputs.secondnumber;
             com.Operator = Operator;
             com.Result = result;
-         // insertData(com);
+            insertData(com);
             ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
@@ -61,7 +61,7 @@ namespace CalculatorWebService
             com.InputB = inputs.secondnumber;
             com.Operator = Operator;
             com.Result = result;
-           // insertData(com);
+            insertData(com);
             ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
@@ -77,7 +77,7 @@ namespace CalculatorWebService
             com.InputB = inputs.secondnumber;
             com.Operator = Operator;
             com.Result = result;
-            //  insertData(com);
+            insertData(com);
             ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
@@ -105,16 +105,26 @@ namespace CalculatorWebService
             return calResultList;
         }
         [WebMethod(Description = "This method writes the recent calculation into the DB")]
-        public ComputationResult insertData(Compute com)
+        public ComputationResult insertData(Compute computationData)
         {
             Db db = new Db();
             db.InitializeDb();
             int id = db.GetAllCalculations().Rows.Count + 1;
-            string RecentCalculation = com.InputA + com.Operator + com.InputB + "=" + com.Result;
-            db.Insert(id, RecentCalculation);
+            string RecentCalculation = computationData.InputA + computationData.Operator + computationData.InputB + "=" + computationData.Result;
+            bool isSuccessful=db.Insert(id, RecentCalculation);
             ComputationResult computationResult = new ComputationResult();
-            computationResult.Message = "Successfull";
-            computationResult.Value = 00;
+            if (isSuccessful)
+            {
+               
+                computationResult.Message = "Successfull";
+                computationResult.Value = 00;
+            }
+            else
+            {
+                computationResult.Message = "Failure";
+                computationResult.Value = 00;
+            }
+            
             return computationResult;
         }
     }
