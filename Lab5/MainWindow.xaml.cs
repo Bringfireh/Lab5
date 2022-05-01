@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Lab5.Business;
 using Lab5.CalculatorWebService;
 namespace Lab5
 {
@@ -31,10 +32,10 @@ namespace Lab5
         {
             CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             Calculations[] cal = client.getList();
-            List<Calculations> lcal = new List<Calculations>();
+            List<Calculation> lcal = new List<Calculation>();
            foreach(var item in cal)
             {
-                Calculations cax = new Calculations();
+                Calculation cax = new Calculation();
                 cax.Id = item.Id;
                 cax.RecentCalculations = item.RecentCalculations;
                 lcal.Add(cax);
