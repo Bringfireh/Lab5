@@ -46,19 +46,12 @@ namespace Lab5.Business
             }
             return lcal;
         }
-        public List<Calculation> InsertData(Compute computationdata)
+        public bool InsertData(Compute computationdata)
         {
             CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
-            Calculations[] cal = client.getList();
-            List<Calculation> lcal = new List<Calculation>();
-            foreach (var item in cal)
-            {
-                Calculation cax = new Calculation();
-                cax.Id = item.Id;
-                cax.RecentCalculations = item.RecentCalculations;
-                lcal.Add(cax);
-            }
-            return lcal;
+            ComputationResult result = client.insertData(computationdata);
+            if (result.Message == "Successful") return true;
+            return false;
         }
     }
 }

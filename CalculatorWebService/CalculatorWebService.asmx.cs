@@ -116,7 +116,7 @@ namespace CalculatorWebService
             if (isSuccessful)
             {
                
-                computationResult.Message = "Successfull";
+                computationResult.Message = "Successful";
                 computationResult.Value = 00;
             }
             else
