@@ -122,7 +122,7 @@ namespace CalculatorWebService
             else
             {
                 computationResult.Message = "Failure";
-                computationResult.Value = 00;
+                computationResult.Value = 01;
             }
             
             return computationResult;

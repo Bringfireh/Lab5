@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Lab5.CalculatorWebService;
 namespace Lab5
 {
     /// <summary>
@@ -23,6 +24,19 @@ namespace Lab5
         public MainWindow()
         {
             InitializeComponent();
+        }
+        public void testGetList()
+        {
+           
+        }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
+            Calculations[] cal = client.getList();
+            dgRecord.DataContext = cal.ToList();
+            //DataTable dt = new DataTable();
+           // dt.Load(cal);
         }
     }
 }

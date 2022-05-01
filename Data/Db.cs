@@ -79,7 +79,7 @@ namespace Data
             }
             catch (MySqlException ex)
             {
-                //MessageBox.Show(ex.Message);
+               
                 return false;
             }
         }
