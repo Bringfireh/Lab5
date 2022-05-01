@@ -25,18 +25,14 @@ namespace Lab5
         {
             InitializeComponent();
         }
-        public void testGetList()
-        {
-           
-        }
+        
 
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
             CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             Calculations[] cal = client.getList();
             dgRecord.DataContext = cal.ToList();
-            //DataTable dt = new DataTable();
-           // dt.Load(cal);
+            
         }
     }
 }
