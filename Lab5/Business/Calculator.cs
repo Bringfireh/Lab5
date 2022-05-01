@@ -8,33 +8,29 @@ namespace Lab5.Business
 {
     class Calculator
     {
+        private CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
         public double Add(Inputs inputs)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             ComputationResult result = client.Add(inputs);
             return result.Value;
         }
         public double Subtract(Inputs inputs)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             ComputationResult result = client.Subtract(inputs);
             return result.Value;
         }
         public double Multiply(Inputs inputs)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             ComputationResult result = client.Multiply(inputs);
             return result.Value;
         }
         public double Divide(Inputs inputs)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             ComputationResult result = client.Divide(inputs);
             return result.Value;
         }
         public List<Calculation> GetCalculationList()
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             Calculations[] cal = client.getList();
             List<Calculation> lcal = new List<Calculation>();
             foreach (var item in cal)
@@ -48,7 +44,6 @@ namespace Lab5.Business
         }
         public bool InsertData(Compute computationdata)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             ComputationResult result = client.insertData(computationdata);
             if (result.Message == "Successful") return true;
             return false;

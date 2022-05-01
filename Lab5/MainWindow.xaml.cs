@@ -30,18 +30,10 @@ namespace Lab5
 
         private void BtnView_Click(object sender, RoutedEventArgs e)
         {
-            CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
-            Calculations[] cal = client.getList();
-            List<Calculation> lcal = new List<Calculation>();
-           foreach(var item in cal)
-            {
-                Calculation cax = new Calculation();
-                cax.Id = item.Id;
-                cax.RecentCalculations = item.RecentCalculations;
-                lcal.Add(cax);
-            }
-            dgRecord.DataContext = lcal;
+            Calculator cal = new Calculator();
             
+            dgRecord.DataContext = cal.GetCalculationList();
+
         }
     }
 }
