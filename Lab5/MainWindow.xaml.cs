@@ -31,7 +31,15 @@ namespace Lab5
         {
             CalculatorWebServiceSoapClient client = new CalculatorWebServiceSoapClient();
             Calculations[] cal = client.getList();
-            dgRecord.DataContext = cal.ToList();
+            List<Calculations> lcal = new List<Calculations>();
+           foreach(var item in cal)
+            {
+                Calculations cax = new Calculations();
+                cax.Id = item.Id;
+                cax.RecentCalculations = item.RecentCalculations;
+                lcal.Add(cax);
+            }
+            dgRecord.DataContext = lcal;
             
         }
     }

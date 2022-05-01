@@ -65,6 +65,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Business\Calculation.cs" />
+    <Compile Include="Business\Calculator.cs" />
     <Compile Include="Connected Services\CalculatorWebService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
