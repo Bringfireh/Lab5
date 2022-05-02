@@ -23,7 +23,7 @@
         <Button x:Name="btnMultiply" Content="*" HorizontalAlignment="Left" Height="42" Margin="26,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.714" FontSize="24" Click="BtnMultiply_Click"/>
         <Button x:Name="btnDivide" Content="/" HorizontalAlignment="Left" Height="42" Margin="172,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.562,2.214" FontSize="24" Click="BtnDivide_Click"/>
         <Button x:Name="btnClear" Content="C" HorizontalAlignment="Left" Height="42" Margin="317,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnClear_Click"/>
-        <Button x:Name="btnViewCalc" Content="Recent Calculations" HorizontalAlignment="Left" Height="42" Margin="27,398,0,0" VerticalAlignment="Top" Width="273" RenderTransformOrigin="0.5,2.262" FontSize="24"/>
+        <Button x:Name="btnViewCalc" Content="Recent Calculations" HorizontalAlignment="Left" Height="42" Margin="27,398,0,0" VerticalAlignment="Top" Width="273" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnViewCalc_Click"/>
         <Button x:Name="btnEqual" Content="=" HorizontalAlignment="Left" Height="42" Margin="318,398,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnEqual_Click"/>
     </Grid>
 </Window>

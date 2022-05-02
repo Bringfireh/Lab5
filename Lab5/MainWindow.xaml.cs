@@ -93,11 +93,7 @@ namespace Lab5
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text == "")
-            {
-
-            }
-            else
+            if (txtDisplay.Text != "")
             {
                 txtDisplay.Text = txtDisplay.Text + "+";
             }
@@ -106,11 +102,7 @@ namespace Lab5
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text == "")
-            {
-
-            }
-            else
+            if (txtDisplay.Text != "")
             {
                 txtDisplay.Text = txtDisplay.Text + "-";
             }
@@ -119,11 +111,7 @@ namespace Lab5
 
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text == "")
-            {
-
-            }
-            else
+            if (txtDisplay.Text != "")
             {
                 txtDisplay.Text = txtDisplay.Text + "*";
             }
@@ -134,11 +122,7 @@ namespace Lab5
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text == "")
-            {
-
-            }
-            else
+            if (txtDisplay.Text != "")
             {
                 txtDisplay.Text = txtDisplay.Text + "/";
             }
@@ -183,12 +167,10 @@ namespace Lab5
                             inputs.firstnumber = firstnumber;
                             inputs.secondnumber = secondnumber;
                             Compute com = new Compute();
+                            Calculator cal = new Calculator();
                             if (opSign == "+")
                             {
-                        
-                                Calculator cal = new Calculator();
                                 double result = cal.Add(inputs);
-                            
                                 com.InputA = inputs.firstnumber;
                                 com.InputB = inputs.secondnumber;
                                 com.Operator = opSign;
@@ -198,7 +180,6 @@ namespace Lab5
                             }
                             else if (opSign == "-")
                             {
-                                Calculator cal = new Calculator();
                                 double result = cal.Subtract(inputs);
                                 com.InputA = inputs.firstnumber;
                                 com.InputB = inputs.secondnumber;
@@ -209,7 +190,6 @@ namespace Lab5
                             }
                             else if (opSign == "*")
                             {
-                                Calculator cal = new Calculator();
                                 double result = cal.Multiply(inputs);
                                 com.InputA = inputs.firstnumber;
                                 com.InputB = inputs.secondnumber;
@@ -221,7 +201,6 @@ namespace Lab5
                             }
                             else if (opSign == "/")
                             {
-                                Calculator cal = new Calculator();
                                 double result = cal.Divide(inputs);
                                 com.InputA = inputs.firstnumber;
                                 com.InputB = inputs.secondnumber;
@@ -236,6 +215,12 @@ namespace Lab5
                 }
 
             }
+        }
+
+        private void BtnViewCalc_Click(object sender, RoutedEventArgs e)
+        {
+            View vr = new View();
+            vr.Show();
         }
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Lab5.Business;
 namespace Lab5
 {
     /// <summary>
@@ -22,6 +22,12 @@ namespace Lab5
         public View()
         {
             InitializeComponent();
+        }
+
+        private void BtnViewAllRecords_Click(object sender, RoutedEventArgs e)
+        {
+            Calculator cal = new Calculator();
+            dgRecord.DataContext =cal.GetCalculationList() ;
         }
     }
 }
