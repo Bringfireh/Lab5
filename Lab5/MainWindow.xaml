@@ -5,10 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab5"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid x:Name="dgRecord"  HorizontalAlignment="Left" Height="349" Margin="95,60,0,0" VerticalAlignment="Top" Width="653" FontSize="18" AutoGenerateColumns="True" ItemsSource="{Binding}"/>
-        <Button x:Name="btnView" Content="View" HorizontalAlignment="Left" Height="41" Margin="96,14,0,0" VerticalAlignment="Top" Width="158" FontSize="24" Click="BtnView_Click"/>
-
+        Title="Calculator" Height="490.25" Width="483" WindowStyle="ThreeDBorderWindow" ResizeMode="NoResize">
+    <Grid Margin="0,0,2,0">
+        <TextBox x:Name="txtDisplay" HorizontalAlignment="Left" Height="90" Margin="26,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="420" FontSize="24" FontWeight="Bold" Cursor="IBeam" IsEnabled="False"/>
+        <Button x:Name="btn1" Content="1" HorizontalAlignment="Left" Height="42" Margin="26,105,0,0" VerticalAlignment="Top" Width="128" FontSize="24" Click="Btn1_Click"/>
+        <Button x:Name="btn2" Content="2" HorizontalAlignment="Left" Height="42" Margin="172,105,0,0" VerticalAlignment="Top" Width="128" FontSize="24" Click="Btn2_Click"/>
+        <Button x:Name="btn3" Content="3" HorizontalAlignment="Left" Height="42" Margin="317,105,0,0" VerticalAlignment="Top" Width="128" FontSize="24" Click="Btn3_Click"/>
+        <Button x:Name="btn4" Content="4" HorizontalAlignment="Left" Height="42" Margin="26,162,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.714" FontSize="24" Click="Btn4_Click"/>
+        <Button x:Name="btn5" Content="5" HorizontalAlignment="Left" Height="42" Margin="172,162,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.562,2.214" FontSize="24" Click="Btn5_Click"/>
+        <Button x:Name="btn6" Content="6" HorizontalAlignment="Left" Height="42" Margin="317,162,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="Btn6_Click"/>
+        <Button x:Name="btn7" Content="7" HorizontalAlignment="Left" Height="42" Margin="27,225,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.714" FontSize="24" Click="Btn7_Click"/>
+        <Button x:Name="btn8" Content="8" HorizontalAlignment="Left" Height="42" Margin="172,225,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.562,2.214" FontSize="24" Click="Btn8_Click"/>
+        <Button x:Name="btn9" Content="9" HorizontalAlignment="Left" Height="42" Margin="317,225,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="Btn9_Click"/>
+        <Button x:Name="btn0" Content="0" HorizontalAlignment="Left" Height="42" Margin="26,283,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.714" FontSize="24" Click="Btn0_Click"/>
+        <Button x:Name="btnPlus" Content="+" HorizontalAlignment="Left" Height="42" Margin="172,283,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.562,2.214" FontSize="24" Click="BtnPlus_Click"/>
+        <Button x:Name="btnMinus" Content="-" HorizontalAlignment="Left" Height="42" Margin="317,283,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnMinus_Click"/>
+        <Button x:Name="btnMultiply" Content="*" HorizontalAlignment="Left" Height="42" Margin="26,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,1.714" FontSize="24" Click="BtnMultiply_Click"/>
+        <Button x:Name="btnDivide" Content="/" HorizontalAlignment="Left" Height="42" Margin="172,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.562,2.214" FontSize="24" Click="BtnDivide_Click"/>
+        <Button x:Name="btnClear" Content="C" HorizontalAlignment="Left" Height="42" Margin="317,341,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnClear_Click"/>
+        <Button x:Name="btnViewCalc" Content="Recent Calculations" HorizontalAlignment="Left" Height="42" Margin="27,398,0,0" VerticalAlignment="Top" Width="273" RenderTransformOrigin="0.5,2.262" FontSize="24"/>
+        <Button x:Name="btnEqual" Content="=" HorizontalAlignment="Left" Height="42" Margin="318,398,0,0" VerticalAlignment="Top" Width="128" RenderTransformOrigin="0.5,2.262" FontSize="24" Click="BtnEqual_Click"/>
     </Grid>
 </Window>
