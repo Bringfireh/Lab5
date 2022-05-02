@@ -18,19 +18,12 @@ namespace CalculatorWebService
     [System.Web.Script.Services.ScriptService]
     public class CalculatorWebService : System.Web.Services.WebService
     {
+        private ComputationResult computationResult = new ComputationResult();
 
         [WebMethod(Description = "This method adds two numbers")]
         public ComputationResult Add(Inputs inputs)
         {
             double result = (inputs.firstnumber + inputs.secondnumber);
-            string Operator = "+";
-            Compute com = new Compute();
-            com.InputA = inputs.firstnumber;
-            com.InputB = inputs.secondnumber;
-            com.Operator = Operator;
-            com.Result = result;
-            insertData(com);
-            ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
             return computationResult;
@@ -39,14 +32,6 @@ namespace CalculatorWebService
         public ComputationResult Divide(Inputs inputs)
         {
             double result = (inputs.firstnumber / inputs.secondnumber); 
-            string Operator = "/";
-            Compute com = new Compute();
-            com.InputA = inputs.firstnumber;
-            com.InputB = inputs.secondnumber;
-            com.Operator = Operator;
-            com.Result = result;
-            insertData(com);
-            ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
             return computationResult;
@@ -55,14 +40,6 @@ namespace CalculatorWebService
         public ComputationResult Multiply(Inputs inputs)
         {
             double result = (inputs.firstnumber * inputs.secondnumber);
-            string Operator = "*";
-            Compute com = new Compute();
-            com.InputA = inputs.firstnumber;
-            com.InputB = inputs.secondnumber;
-            com.Operator = Operator;
-            com.Result = result;
-            insertData(com);
-            ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
             return computationResult;
@@ -71,14 +48,6 @@ namespace CalculatorWebService
         public ComputationResult Subtract(Inputs inputs)
         {
             double result = (inputs.firstnumber - inputs.secondnumber);
-            string Operator = "-";
-            Compute com = new Compute();
-            com.InputA = inputs.firstnumber;
-            com.InputB = inputs.secondnumber;
-            com.Operator = Operator;
-            com.Result = result;
-            insertData(com);
-            ComputationResult computationResult = new ComputationResult();
             computationResult.Message = "Successfull";
             computationResult.Value = result;
             return computationResult;
@@ -112,7 +81,7 @@ namespace CalculatorWebService
             int id = db.GetAllCalculations().Rows.Count + 1;
             string RecentCalculation = computationData.InputA + computationData.Operator + computationData.InputB + "=" + computationData.Result;
             bool isSuccessful=db.Insert(id, RecentCalculation);
-            ComputationResult computationResult = new ComputationResult();
+
             if (isSuccessful)
             {
                

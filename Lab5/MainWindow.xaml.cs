@@ -93,64 +93,50 @@ namespace Lab5
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text.Contains("+") == true )
+            if (txtDisplay.Text == "")
             {
-                MessageBox.Show("You can not Add more than two numbers!","Error");
-            }
-            else if( txtDisplay.Text == "")
-            {
-                MessageBox.Show("You can not Add to nothing!", "Error");
+
             }
             else
             {
                 txtDisplay.Text = txtDisplay.Text + "+";
             }
-            
+
         }
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text.Contains("-") == true)
+            if (txtDisplay.Text == "")
             {
-                MessageBox.Show("You can not Add more than two numbers!", "Error");
-            }
-            else if (txtDisplay.Text == "")
-            {
-                MessageBox.Show("You can not Subtract from nothing!", "Error");
+
             }
             else
             {
                 txtDisplay.Text = txtDisplay.Text + "-";
             }
-           
+
         }
 
         private void BtnMultiply_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text.Contains("*") == true)
+            if (txtDisplay.Text == "")
             {
-                MessageBox.Show("You can not Multiply more than two numbers!", "Error");
-            }
-            else if (txtDisplay.Text == "")
-            {
-                MessageBox.Show("You can not Multiply by nothing!", "Error");
+
             }
             else
             {
                 txtDisplay.Text = txtDisplay.Text + "*";
             }
+               
+            
             
         }
 
         private void BtnDivide_Click(object sender, RoutedEventArgs e)
         {
-            if (txtDisplay.Text.Contains("/") == true)
+            if (txtDisplay.Text == "")
             {
-                MessageBox.Show("You can not divide more than two numbers!", "Error");
-            }
-            else if (txtDisplay.Text == "")
-            {
-                MessageBox.Show("You can not divide by nothing!", "Error");
+
             }
             else
             {
@@ -161,7 +147,95 @@ namespace Lab5
 
         private void BtnEqual_Click(object sender, RoutedEventArgs e)
         {
-            txtDisplay.Text = txtDisplay.Text + "=";
+            string computation = txtDisplay.Text;
+            if (computation.Contains("="))
+            {
+                MessageBox.Show("Clear screen before you will perform another operation", "Error");
+            }
+            else
+            {
+
+            
+                if (computation != "")
+                {
+                    char[] c = new char[] { '*', '-', '+', '/' };
+
+                    string[] values = computation.Split(c);
+                    if (values.Length > 2)
+                    {
+                        MessageBox.Show("You cannot compute more than two terms. Ensure that you have only two numbers", "Error");
+                    }
+                    else
+                    {
+                        if (values[0] != "" && values[1] != "") { 
+                            double firstnumber = Convert.ToDouble(values[0]);
+                            double secondnumber = Convert.ToDouble(values[1]);
+                            string[] symbolbuffer = computation.Split(values, StringSplitOptions.None);
+                            string opSign = "";
+                            foreach (var symbol in symbolbuffer)
+                            {
+                                if (symbol != "")
+                                {
+                                    opSign = symbol;
+                                }
+                            }
+                            Inputs inputs = new Inputs();
+                            inputs.firstnumber = firstnumber;
+                            inputs.secondnumber = secondnumber;
+                            Compute com = new Compute();
+                            if (opSign == "+")
+                            {
+                        
+                                Calculator cal = new Calculator();
+                                double result = cal.Add(inputs);
+                            
+                                com.InputA = inputs.firstnumber;
+                                com.InputB = inputs.secondnumber;
+                                com.Operator = opSign;
+                                com.Result = result;
+                                cal.InsertData(com);
+                                txtDisplay.Text = txtDisplay.Text + "=" + result ;
+                            }
+                            else if (opSign == "-")
+                            {
+                                Calculator cal = new Calculator();
+                                double result = cal.Subtract(inputs);
+                                com.InputA = inputs.firstnumber;
+                                com.InputB = inputs.secondnumber;
+                                com.Operator = opSign;
+                                com.Result = result;
+                                cal.InsertData(com);
+                                txtDisplay.Text = txtDisplay.Text + "=" + result;
+                            }
+                            else if (opSign == "*")
+                            {
+                                Calculator cal = new Calculator();
+                                double result = cal.Multiply(inputs);
+                                com.InputA = inputs.firstnumber;
+                                com.InputB = inputs.secondnumber;
+                                com.Operator = opSign;
+                                com.Result = result;
+                                cal.InsertData(com);
+                                txtDisplay.Text = txtDisplay.Text + "=" + result;
+
+                            }
+                            else if (opSign == "/")
+                            {
+                                Calculator cal = new Calculator();
+                                double result = cal.Divide(inputs);
+                                com.InputA = inputs.firstnumber;
+                                com.InputB = inputs.secondnumber;
+                                com.Operator = opSign;
+                                com.Result = result;
+                                cal.InsertData(com);
+                                txtDisplay.Text = txtDisplay.Text + "=" + result;
+                            }
+                        }
+                        
+                    }
+                }
+
+            }
         }
     }
 }
